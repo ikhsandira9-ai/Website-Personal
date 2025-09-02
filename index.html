@@ -1,0 +1,439 @@
+<html lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   WorldShop - Toko Serba Ada Bertema Dunia
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #22c55e, #ffffff, #000000);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+    }
+    /* Animasi globe berputar */
+    @keyframes spin-globe {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    .globe-spin {
+      animation: spin-globe 20s linear infinite;
+      transform-origin: center center;
+    }
+    /* Animasi tombol hover */
+    .btn-animated {
+      transition: all 0.3s ease;
+    }
+    .btn-animated:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(34 197 94 / 0.6);
+    }
+    /* Animasi menu underline */
+    .nav-link {
+      position: relative;
+      overflow: hidden;
+      color: #22c55e; /* green-500 */
+      font-weight: 600;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #000000; /* black */
+      bottom: 0;
+      left: -100%;
+      transition: left 0.3s ease;
+    }
+    .nav-link:hover::after,
+    .nav-link:focus::after {
+      left: 0;
+    }
+    header {
+      background-color: rgba(0,0,0,0.7);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+    nav a:hover,
+    nav a:focus {
+      color: #166534; /* green-700 */
+    }
+    /* Section backgrounds */
+    section#products {
+      background: rgba(255 255 255 / 0.85);
+      border-radius: 0.75rem;
+      margin: 0 1.5rem;
+    }
+    section#payment {
+      background: rgba(255 255 255 / 0.85);
+      border-radius: 0.75rem;
+      margin: 0 1.5rem;
+    }
+    section#about {
+      background: rgba(255 255 255 / 0.85);
+      border-radius: 0.75rem;
+      margin: 0 1.5rem;
+    }
+    section#contact {
+      background: rgba(255 255 255 / 0.85);
+      border-radius: 0.75rem;
+      margin: 0 1.5rem;
+    }
+    section#location {
+      background: rgba(255 255 255 / 0.85);
+      border-radius: 0.75rem;
+      margin: 0 1.5rem 2rem 1.5rem;
+    }
+    h1, h2, h3, h4 {
+      color: #22c55e; /* green-500 */
+    }
+    p, span, label, input, textarea, button {
+      color: #111827; /* gray-900 */
+    }
+    button.bg-indigo-600 {
+      background-color: #22c55e !important; /* green-500 */
+      color: #000000 !important;
+      box-shadow: 0 4px 6px rgba(34 197 94 / 0.5);
+    }
+    button.bg-indigo-600:hover {
+      background-color: #166534 !important; /* green-700 */
+      color: #fff !important;
+      box-shadow: 0 8px 15px rgba(34 197 94 / 0.8);
+    }
+    /* Scrollbar for iframe container */
+    iframe {
+      border-radius: 0.5rem;
+      border: none;
+    }
+    /* Mobile menu background */
+    #mobile-menu {
+      background-color: rgba(0,0,0,0.8);
+    }
+    #mobile-menu a {
+      color: #22c55e;
+      font-weight: 600;
+    }
+    #mobile-menu a:hover {
+      background-color: #166534;
+      color: #fff;
+    }
+    /* Scrollbar for page */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #000000;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #22c55e;
+      border-radius: 4px;
+    }
+  </style>
+ </head>
+ <body>
+  <!-- Header -->
+  <header class="sticky top-0 z-50">
+   <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+     <img alt="Logo WorldShop berupa globe dunia berwarna biru dan hijau" class="w-12 h-12 globe-spin" height="48" src="https://storage.googleapis.com/a1aa/image/251f5b06-f230-4a53-e411-03f9848a6d27.jpg" width="48"/>
+     <h1 class="text-2xl select-none">
+      WorldShop
+     </h1>
+    </div>
+    <nav class="hidden md:flex space-x-8 font-medium">
+     <a class="nav-link" href="#home">
+      Beranda
+     </a>
+     <a class="nav-link" href="#products">
+      Produk
+     </a>
+     <a class="nav-link" href="#payment">
+      Metode Pembayaran
+     </a>
+     <a class="nav-link" href="#about">
+      Tentang Kami
+     </a>
+     <a class="nav-link" href="#contact">
+      Kontak
+     </a>
+     <a class="nav-link" href="#location">
+      Lokasi Kami
+     </a>
+    </nav>
+    <button aria-label="Toggle menu" class="md:hidden focus:outline-none focus:ring-2 focus:ring-green-500" id="menu-btn">
+     <i class="fas fa-bars fa-lg text-green-500">
+     </i>
+    </button>
+   </div>
+   <!-- Mobile menu -->
+   <nav aria-label="Mobile menu" class="hidden md:hidden border-t border-green-500" id="mobile-menu">
+    <a class="block px-6 py-3 border-b border-green-500 font-semibold hover:bg-green-700" href="#home">
+     Beranda
+    </a>
+    <a class="block px-6 py-3 border-b border-green-500 font-semibold hover:bg-green-700" href="#products">
+     Produk
+    </a>
+    <a class="block px-6 py-3 border-b border-green-500 font-semibold hover:bg-green-700" href="#payment">
+     Metode Pembayaran
+    </a>
+    <a class="block px-6 py-3 border-b border-green-500 font-semibold hover:bg-green-700" href="#about">
+     Tentang Kami
+    </a>
+    <a class="block px-6 py-3 border-b border-green-500 font-semibold hover:bg-green-700" href="#contact">
+     Kontak
+    </a>
+    <a class="block px-6 py-3 font-semibold hover:bg-green-700" href="#location">
+     Lokasi Kami
+    </a>
+   </nav>
+  </header>
+  <!-- Hero Section -->
+  <section class="flex flex-col-reverse md:flex-row items-center justify-between container mx-auto px-6 py-16 gap-10" id="home">
+   <div class="max-w-xl text-center md:text-left space-y-6">
+    <h2 class="text-4xl font-extrabold leading-tight">
+     Selamat Datang di
+     <span>
+      WorldShop
+     </span>
+    </h2>
+    <p class="text-gray-900 text-lg">
+     Toko serba ada bertema dunia yang menyediakan berbagai produk dari seluruh penjuru dunia dengan harga terbaik.
+    </p>
+    <a class="inline-block bg-green-500 text-black px-6 py-3 rounded-md font-semibold btn-animated shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500" href="#products">
+     Jelajahi Produk
+    </a>
+   </div>
+   <div class="w-full max-w-md">
+    <img alt="Ilustrasi globe dunia dengan tas belanja dan landmark dunia seperti Menara Eiffel, Patung Liberty, dan Piramida" class="w-full rounded-lg shadow-lg globe-spin" height="400" src="https://storage.googleapis.com/a1aa/image/d9e82f46-b618-49c6-79c2-889101f461c3.jpg" width="400"/>
+   </div>
+  </section>
+  <!-- Products Section -->
+  <section class="py-16" id="products">
+   <div class="container mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center mb-12">
+     Produk Unggulan
+    </h3>
+    <div aria-label="Daftar produk unggulan WorldShop" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+     <article class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105" tabindex="0">
+      <img alt="Produk elektronik global berupa smartphone modern dengan latar belakang peta dunia" class="w-full h-48 object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/1aeff9a4-10f2-4f04-4912-1543f93e752e.jpg" width="400"/>
+      <div class="p-4">
+       <h4 class="font-semibold text-lg text-green-600 mb-2">
+        Elektronik Global
+       </h4>
+       <p class="text-gray-900 text-sm mb-4">
+        Smartphone, laptop, dan gadget dari berbagai negara dengan teknologi terbaru.
+       </p>
+       <button class="w-full bg-green-500 text-black py-2 rounded-md font-semibold btn-animated hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+        Beli Sekarang
+       </button>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105" tabindex="0">
+      <img alt="Produk fashion internasional berupa pakaian dan aksesori dari berbagai budaya dunia" class="w-full h-48 object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/4c48464c-310d-42ed-143f-0cc1e982ba1a.jpg" width="400"/>
+      <div class="p-4">
+       <h4 class="font-semibold text-lg text-green-600 mb-2">
+        Fashion Internasional
+       </h4>
+       <p class="text-gray-900 text-sm mb-4">
+        Pakaian dan aksesori dari berbagai budaya dunia, cocok untuk gaya unik Anda.
+       </p>
+       <button class="w-full bg-green-500 text-black py-2 rounded-md font-semibold btn-animated hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+        Beli Sekarang
+       </button>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105" tabindex="0">
+      <img alt="Produk makanan khas dunia berupa berbagai makanan tradisional dari berbagai negara" class="w-full h-48 object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/a2caead4-2ffc-4e3b-403b-2cbab577b3d9.jpg" width="400"/>
+      <div class="p-4">
+       <h4 class="font-semibold text-lg text-green-600 mb-2">
+        Makanan Khas Dunia
+       </h4>
+       <p class="text-gray-900 text-sm mb-4">
+        Cicipi cita rasa autentik dari berbagai negara dengan produk makanan khas kami.
+       </p>
+       <button class="w-full bg-green-500 text-black py-2 rounded-md font-semibold btn-animated hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+        Beli Sekarang
+       </button>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105" tabindex="0">
+      <img alt="Produk peralatan rumah tangga modern dan tradisional dari berbagai negara" class="w-full h-48 object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/8f9c17cd-4abf-4f89-a523-48ea69f7dacd.jpg" width="400"/>
+      <div class="p-4">
+       <h4 class="font-semibold text-lg text-green-600 mb-2">
+        Peralatan Rumah Tangga
+       </h4>
+       <p class="text-gray-900 text-sm mb-4">
+        Peralatan rumah tangga berkualitas dari berbagai belahan dunia untuk kenyamanan Anda.
+       </p>
+       <button class="w-full bg-green-500 text-black py-2 rounded-md font-semibold btn-animated hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+        Beli Sekarang
+       </button>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105" tabindex="0">
+      <img alt="Produk mainan anak internasional berupa mainan edukatif dan kreatif dari berbagai negara" class="w-full h-48 object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/5f58725d-d19b-4868-a7e6-ef8a9c22a61e.jpg" width="400"/>
+      <div class="p-4">
+       <h4 class="font-semibold text-lg text-green-600 mb-2">
+        Mainan Anak Internasional
+       </h4>
+       <p class="text-gray-900 text-sm mb-4">
+        Mainan edukatif dan kreatif dari berbagai negara untuk tumbuh kembang anak Anda.
+       </p>
+       <button class="w-full bg-green-500 text-black py-2 rounded-md font-semibold btn-animated hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+        Beli Sekarang
+       </button>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105" tabindex="0">
+      <img alt="Produk alat olahraga global berupa peralatan olahraga dari berbagai negara" class="w-full h-48 object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/d85de523-7486-49ae-5f1c-fb43d5885120.jpg" width="400"/>
+      <div class="p-4">
+       <h4 class="font-semibold text-lg text-green-600 mb-2">
+        Alat Olahraga Global
+       </h4>
+       <p class="text-gray-900 text-sm mb-4">
+        Peralatan olahraga berkualitas dari berbagai negara untuk gaya hidup sehat Anda.
+       </p>
+       <button class="w-full bg-green-500 text-black py-2 rounded-md font-semibold btn-animated hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+        Beli Sekarang
+       </button>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105" tabindex="0">
+      <img alt="Produk perlengkapan travel internasional berupa koper, tas, dan aksesoris perjalanan" class="w-full h-48 object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/12e5adf9-9dc4-409b-ca33-4b3bb4c6e85e.jpg" width="400"/>
+      <div class="p-4">
+       <h4 class="font-semibold text-lg text-green-600 mb-2">
+        Perlengkapan Travel
+       </h4>
+       <p class="text-gray-900 text-sm mb-4">
+        Koper, tas, dan aksesoris perjalanan dari berbagai negara untuk petualangan Anda.
+       </p>
+       <button class="w-full bg-green-500 text-black py-2 rounded-md font-semibold btn-animated hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+        Beli Sekarang
+       </button>
+      </div>
+     </article>
+    </div>
+   </div>
+  </section>
+  <!-- Payment Methods Section -->
+  <section class="py-16" id="payment">
+   <div class="container mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center mb-12">
+     Metode Pembayaran
+    </h3>
+    <div aria-label="Daftar metode pembayaran yang tersedia di WorldShop" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 items-center justify-center">
+     <div class="flex flex-col items-center space-y-2">
+      <img alt="Logo metode pembayaran Visa berwarna biru dan putih" class="w-20 h-auto" height="50" src="https://storage.googleapis.com/a1aa/image/23eab950-d326-43d2-baea-5fb665e60dec.jpg" width="80"/>
+      <span class="font-semibold text-gray-900">
+       Visa
+      </span>
+     </div>
+     <div class="flex flex-col items-center space-y-2">
+      <img alt="Logo metode pembayaran Mastercard berwarna merah dan kuning" class="w-20 h-auto" height="50" src="https://storage.googleapis.com/a1aa/image/c3650d02-8eb6-414c-8700-fa7b1465b5ce.jpg" width="80"/>
+      <span class="font-semibold text-gray-900">
+       Mastercard
+      </span>
+     </div>
+     <div class="flex flex-col items-center space-y-2">
+      <img alt="Logo metode pembayaran PayPal berwarna biru muda dan putih" class="w-20 h-auto" height="50" src="https://storage.googleapis.com/a1aa/image/9dbbff51-5fa9-4046-a5c6-d5d9216bd926.jpg" width="80"/>
+      <span class="font-semibold text-gray-900">
+       PayPal
+      </span>
+     </div>
+     <div class="flex flex-col items-center space-y-2">
+      <img alt="Logo metode pembayaran Gopay berwarna biru gelap" class="w-20 h-auto" height="50" src="https://storage.googleapis.com/a1aa/image/23073805-0c54-4c89-b80a-bf54a9c667ec.jpg" width="80"/>
+      <span class="font-semibold text-gray-900">
+       Gopay
+      </span>
+     </div>
+     <div class="flex flex-col items-center space-y-2">
+      <img alt="Logo metode pembayaran OVO berwarna ungu" class="w-20 h-auto" height="50" src="https://storage.googleapis.com/a1aa/image/1a73a704-9db9-42f8-e861-93428e2f4e96.jpg" width="80"/>
+      <span class="font-semibold text-gray-900">
+       OVO
+      </span>
+     </div>
+     <div class="flex flex-col items-center space-y-2">
+      <img alt="Ikon metode pembayaran transfer bank berupa gambar bank berwarna biru" class="w-20 h-auto" height="50" src="https://storage.googleapis.com/a1aa/image/5c6fffa2-4a1e-4609-2cce-abc04d360f3a.jpg" width="80"/>
+      <span class="font-semibold text-gray-900">
+       Transfer Bank
+      </span>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- About Section -->
+  <section class="py-16 container mx-auto px-6 flex flex-col md:flex-row items-center gap-12" id="about" style="background: rgba(255 255 255 / 0.85); border-radius: 0.75rem; margin: 0 1.5rem;">
+   <div class="md:w-1/2">
+    <img alt="Foto tim WorldShop berkumpul dengan globe dunia di tengah ruangan kantor modern" class="rounded-lg shadow-lg w-full object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/873048d8-54c2-454d-a65d-4168d41e3bc0.jpg" width="600"/>
+   </div>
+   <div class="md:w-1/2 space-y-6">
+    <h3 class="text-3xl font-bold">
+     Tentang WorldShop
+    </h3>
+    <p class="text-gray-900 text-lg leading-relaxed">
+     WorldShop adalah toko serba ada yang mengusung tema dunia, menyediakan produk-produk berkualitas dari berbagai negara. Kami berkomitmen memberikan pengalaman belanja yang mudah, aman, dan menyenangkan bagi pelanggan kami.
+    </p>
+    <p class="text-gray-900 text-lg leading-relaxed">
+     Dengan jaringan global dan metode pembayaran yang lengkap, kami memastikan Anda dapat menemukan produk impian dari seluruh penjuru dunia dengan mudah dan cepat.
+    </p>
+   </div>
+  </section>
+  <!-- Contact Section -->
+  <section class="py-16" id="contact" style="background: rgba(255 255 255 / 0.85); border-radius: 0.75rem; margin: 0 1.5rem;">
+   <div class="container mx-auto px-6 max-w-3xl">
+    <h3 class="text-3xl font-bold text-center mb-12">
+     Kontak Kami
+    </h3>
+    <form aria-label="Formulir kontak WorldShop" class="bg-white rounded-lg shadow-md p-8 space-y-6" id="contact-form">
+     <div>
+      <label class="block text-gray-900 font-semibold mb-2" for="name">
+       Nama Lengkap
+      </label>
+      <input class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" id="name" name="name" placeholder="Masukkan nama lengkap Anda" required="" type="text"/>
+     </div>
+     <div>
+      <label class="block text-gray-900 font-semibold mb-2" for="email">
+       Email
+      </label>
+      <input class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" id="email" name="email" placeholder="Masukkan email Anda" required="" type="email"/>
+     </div>
+     <div>
+      <label class="block text-gray-900 font-semibold mb-2" for="message">
+       Pesan
+      </label>
+      <textarea class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" id="message" name="message" placeholder="Tulis pesan Anda di sini" required="" rows="4"></textarea>
+     </div>
+     <button class="w-full bg-green-500 text-black py-3 rounded-md font-semibold btn-animated hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500" type="submit">
+      Kirim Pesan
+     </button>
+     <p class="text-center text-green-600 font-semibold hidden" id="form-message">
+     </p>
+    </form>
+   </div>
+  </section>
+  <!-- Location Section with Google Map -->
+  <section class="py-16" id="location" style="background: rgba(255 255 255 / 0.85); border-radius: 0.75rem; margin: 0 1.5rem 2rem 1.5rem;">
+   <div class="container mx-auto px-6 max-w-5xl">
+    <h3 class="text-3xl font-bold text-center mb-12">
+     Lokasi Kami
+    </h3>
+    <div class="rounded-lg overflow-hidden shadow-lg">
+     <iframe allowfullscreen="" aria-label="Peta lokasi WorldShop di Jakarta, Indonesia" class="w-full h-96 md:h-[500px]" frameborder="0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!4v1756793473446!6m8!1m7!1sCh9CEwC7hEa_Vs9MkoNV9A!2m2!1d-6.360186796343754!2d107.5838744444626!3f177.91306742780398!4f5.641526499985787!5f0.7820865974627469">
+     </iframe>
+    </div>
+    <p class="mt-6 text-center text-gray-900 text-lg">
+     Kunjungi toko kami di Monumen Nasional (Monas), Jakarta Pusat, Indonesia. Kami siap melayani Anda dengan produk terbaik dari seluruh dunia.
+    </p>
+   </div>
+  </section>
+  <!--
